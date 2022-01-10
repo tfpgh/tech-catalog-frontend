@@ -26,16 +26,8 @@
         margin: 1%;
     }
 
-    h1,
-    button {
+    h1 {
         color: #e63946;
-    }
-
-    button {
-        width: 95%;
-        margin-top: 3%;
-        background-color: #eeeeee;
-        border-radius: 20px;
     }
 
     p {

@@ -433,19 +433,19 @@ var app = (function () {
     			t6 = space();
     			img = element("img");
     			attr_dev(h1, "id", "name");
-    			attr_dev(h1, "class", "svelte-1j2asce");
+    			attr_dev(h1, "class", "svelte-q7yyu3");
     			add_location(h1, file$1, 8, 4, 214);
     			attr_dev(p0, "id", "description");
-    			attr_dev(p0, "class", "svelte-1j2asce");
+    			attr_dev(p0, "class", "svelte-q7yyu3");
     			add_location(p0, file$1, 9, 4, 244);
     			attr_dev(p1, "id", "quantity");
-    			attr_dev(p1, "class", "svelte-1j2asce");
+    			attr_dev(p1, "class", "svelte-q7yyu3");
     			add_location(p1, file$1, 10, 4, 286);
     			if (!src_url_equal(img.src, img_src_value = /*image_url*/ ctx[3])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", /*description*/ ctx[1]);
-    			attr_dev(img, "class", "svelte-1j2asce");
+    			attr_dev(img, "class", "svelte-q7yyu3");
     			add_location(img, file$1, 11, 4, 332);
-    			attr_dev(div, "class", "svelte-1j2asce");
+    			attr_dev(div, "class", "svelte-q7yyu3");
     			add_location(div, file$1, 7, 0, 204);
     		},
     		l: function claim(nodes) {
