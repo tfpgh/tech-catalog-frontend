@@ -1,6 +1,5 @@
 <script>
 	import Item from "./Item.svelte";
-	import AddItem from "./AddItem.svelte";
 	import { onMount } from "svelte";
 
 	let items = [];
@@ -13,12 +12,10 @@
 </script>
 
 <main>
-	<AddItem />
 	{#each items as item}
 		<Item
-			key={item.key}
 			name={item.name}
-			desc={item.description}
+			description={item.description}
 			quantity={item.quantity}
 			image_url={"https://tech-catalog-images.s3.us-west-1.amazonaws.com/" +
 				item.key +

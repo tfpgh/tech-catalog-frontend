@@ -1,48 +1,15 @@
 <script>
-    export let key;
     export let name = "Default Name";
-    export let desc = "Default Description";
+    export let description = "Default Description";
     export let quantity = "42";
     export let image_url = "https://via.placeholder.com/720";
-
-    function updateItem() {
-        const item = {
-            key: key,
-            name: name,
-            description: desc,
-            quantity: quantity,
-        };
-
-        fetch("https://tech-catalog-backend.herokuapp.com/update_item", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(item),
-        });
-    }
-
-    function deleteItem() {
-        fetch(
-            "https://tech-catalog-backend.herokuapp.com/delete_item?key=" + key,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        ).then(() => document.location.reload());
-    }
 </script>
 
-<div on:input={updateItem}>
-    <h1 contenteditable="true" bind:textContent={name}>{name}</h1>
-    <p contenteditable="true" bind:textContent={desc}>{desc}</p>
-    <p contenteditable="true" bind:textContent={quantity}>
-        Quantity: {quantity}
-    </p>
-    <img src={image_url} alt={desc} />
-    <button on:click={deleteItem}>Delete!</button>
+<div>
+    <h1 id="name">{name}</h1>
+    <p id="description">{description}</p>
+    <p id="quantity">Quantity: {quantity}</p>
+    <img src={image_url} alt={description} />
 </div>
 
 <style>
