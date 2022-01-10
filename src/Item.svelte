@@ -24,6 +24,7 @@
         padding: 1%;
         padding-top: 0;
         margin: 1%;
+        flex-grow: 1;
     }
 
     h1 {
