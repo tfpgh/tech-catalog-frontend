@@ -14,29 +14,32 @@
 
 <style>
     div {
-        background-color: #f1faee;
+        background-color: var(--secondary-background-color);
         width: 380px;
         text-align: center;
-        border-radius: 20px;
+        border-radius: var(--corner-radius);
         border-style: solid;
-        border-color: #457b9d;
+        border-color: var(--border-color);
         border-width: 3px;
-        padding: 1%;
+        padding: 15px;
+        padding-bottom: 20px;
         padding-top: 0;
-        margin: 1%;
+        margin: 15px;
         flex-grow: 1;
     }
 
     h1 {
-        color: #e63946;
+        color: var(--main-text-color);
+        font-family: var(--main-font);
     }
 
     p {
-        color: #457b9d;
+        color: var(--secondary-text-color);
+        font-family: var(--secondary-font);
     }
 
     img {
         max-width: 95%;
-        border-radius: 20px;
+        border-radius: var(--corner-radius);
     }
 </style>
