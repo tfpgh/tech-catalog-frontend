@@ -73,7 +73,7 @@
 		}
 		gtag("js", new Date());
 
-		gtag("config", measurement_id);
+		gtag("config", { measurement_id });
 	</script>
 </svelte:head>
 <div id="top" class="defaults theme-1">
