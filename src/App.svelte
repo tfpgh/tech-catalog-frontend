@@ -20,7 +20,7 @@
 		localStorage.setItem("theme", theme);
 	}
 
-	let measurement_id = "G-9RBCKH0VZC";
+	var measurement_id = "G-9RBCKH0VZC";
 
 	if (theme === "2") {
 		measurement_id = "G-M1C33DTF1P";
