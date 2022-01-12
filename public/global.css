@@ -1,37 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
-.defaults {
-	--main-font: 'Roboto Slab', serif;
-	--secondary-font: 'Open Sans', sans-serif;
-}
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://use.typekit.net/fbp8sfd.css");
 
 .theme-1 {
-	--corner-radius: 10px;
-	--background-color: #eeeeee;
-	--secondary-background-color: #f1faee;
-	--border-color: #457b9d;
-	--main-text-color: #e63946;
-	--secondary-text-color: #457b9d;
-	--header-background-color: #cccccc;
+  --corner-radius: 10px;
+  --background-color: #eeeeee;
+  --secondary-background-color: #f1faee;
+  --border-color: #111827;
+  --main-text-color: #ffffff;
+  --secondary-text-color: #f3f4f6;
+  --header-background-color: #cccccc;
+  --main-font: "acumin-pro", sans-serif;
+  --secondary-font: sans-serif;
 }
 
 .theme-2 {
-	--corner-radius: 20px;
-	--background-color: #eeeeee;
-	--secondary-background-color: #f1faee;
-	--border-color: #457b9d;
-	--main-text-color: #e63946;
-	--secondary-text-color: #457b9d;
-	--header-background-color: #cccccc;
+  --corner-radius: 20px;
+  --background-color: #eeeeee;
+  --secondary-background-color: #f1faee;
+  --border-color: #457b9d;
+  --main-text-color: #e63946;
+  --secondary-text-color: #457b9d;
+  --header-background-color: #cccccc;
+  --main-font: "prometo", sans-serif;
+  --secondary-font: "Inter", sans-serif;
 }
 
 .theme-3 {
-	--corner-radius: 30px;
-	--background-color: #eeeeee;
-	--secondary-background-color: #f1faee;
-	--border-color: #457b9d;
-	--main-text-color: #e63946;
-	--secondary-text-color: #457b9d;
-	--header-background-color: #cccccc;
+  --corner-radius: 30px;
+  --background-color: #111827;
+  --secondary-background-color: #1f2937;
+  --border-color: #9ca3af;
+  --main-text-color: #f9fafb;
+  --secondary-text-color: #457b9d;
+  --header-background-color: #1f2937;
+  --main-font: "expressway", sans-serif;
+  --secondary-font: "acumin-pro", sans-serif;
 }
