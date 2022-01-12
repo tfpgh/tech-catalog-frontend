@@ -80,6 +80,10 @@
 </div>
 
 <style>
+	:global(body) {
+		margin: 0px;
+	}
+
 	#top {
 		background-color: var(--background-color);
 	}
@@ -102,6 +106,6 @@
 		align-items: center;
 		background-color: var(--header-background-color);
 		flex-wrap: wrap;
-		padding: 5px 5px;
+		padding: 5px 15px;
 	}
 </style>

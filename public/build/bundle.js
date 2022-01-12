@@ -989,12 +989,12 @@ var app = (function () {
     			}
 
     			attr_dev(div0, "id", "nav-bar");
-    			attr_dev(div0, "class", "svelte-12zlw4u");
+    			attr_dev(div0, "class", "svelte-nk8x1y");
     			add_location(div0, file, 56, 1, 1282);
-    			attr_dev(main, "class", "svelte-12zlw4u");
+    			attr_dev(main, "class", "svelte-nk8x1y");
     			add_location(main, file, 65, 1, 1510);
     			attr_dev(div1, "id", "top");
-    			attr_dev(div1, "class", "defaults theme-1 svelte-12zlw4u");
+    			attr_dev(div1, "class", "defaults theme-1 svelte-nk8x1y");
     			add_location(div1, file, 55, 0, 1241);
     		},
     		l: function claim(nodes) {
