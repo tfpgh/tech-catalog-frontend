@@ -6,11 +6,11 @@
 .theme-1 {
   --corner-radius: 10px;
   --background-color: #eeeeee;
-  --secondary-background-color: #f1faee;
+  --secondary-background-color: #f9fafb;
   --border-color: #111827;
-  --main-text-color: #ffffff;
-  --secondary-text-color: #f3f4f6;
-  --header-background-color: #cccccc;
+  --main-text-color: #000000;
+  --secondary-text-color: #0f172a;
+  --header-background-color: #f3f4f6;
   --main-font: "acumin-pro", sans-serif;
   --secondary-font: sans-serif;
 }
