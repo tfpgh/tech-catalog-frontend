@@ -19,12 +19,6 @@
 		theme = Math.floor(Math.random() * 3) + 1; // 1-3
 		localStorage.setItem("theme", theme);
 	}
-	if (theme != "1") {
-		const top = document.getElementById("top");
-
-		top.classList.add("theme-" + theme);
-		top.classList.remove("theme-1");
-	}
 
 	let measurement_id = "G-9RBCKH0VZC";
 
@@ -58,6 +52,13 @@
 			"https://tech-catalog-backend.herokuapp.com/get_items"
 		);
 		items = await res.json();
+
+		if (theme != "1") {
+			const top = document.getElementById("top");
+
+			top.classList.add("theme-" + theme);
+			top.classList.remove("theme-1");
+		}
 	});
 </script>
 
