@@ -1,18 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 @import url("https://use.typekit.net/fbp8sfd.css");
 
+/*
 .theme-1 {
   --corner-radius: 10px;
-  --background-color: #eeeeee;
-  --secondary-background-color: #f9fafb;
-  --border-color: #0e7490;
-  --main-text-color: #000000;
-  --secondary-text-color: #0f172a;
-  --header-background-color: #064e3b;
-  --main-font: "acumin-pro", sans-serif;
-  --secondary-font: sans-serif;
+  --background-color: #082032;
+  --secondary-background-color: #334756;
+  --border-color: #FFFFFF;
+  --main-text-color: #FFFFFF;
+  --secondary-text-color: #BCF8EC;
+  --header-background-color: #334756;
+  --main-font: "Work Sans", sans-serif;
+  --secondary-font: "Space Mono", sans-serif;
+}
+*/
+.theme-1 {
+  --corner-radius: 20px;
+  --background-color: #111111;
+  --secondary-background-color: #334756;
+  --border-color: #FFFFFF;
+  --main-text-color: #FFFFFF;
+  --secondary-text-color: #BCF8EC;
+  --header-background-color: #334756;
+  --main-font: "Work Sans", sans-serif;
+  --secondary-font: "Space Mono", sans-serif;
 }
 
 .theme-2 {

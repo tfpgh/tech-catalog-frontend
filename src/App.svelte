@@ -14,6 +14,8 @@
 	}
 	let theme = localStorage.getItem("theme");
 
+	let nav_bar_height = 58;
+
 	// Assign theme if necessary
 	if (theme === null) {
 		theme = Math.floor(Math.random() * 3) + 1; // 1-3
@@ -46,7 +48,18 @@
 			});
 		});
 
-		categories = generating_categories;
+		let cleaned_categories = generating_categories.filter((category) => {
+			if (category === "All" || category === "Other") {
+				return false;
+			}
+			return true;
+		});
+
+		cleaned_categories.sort();
+		cleaned_categories.unshift("All"); // Makes sure all is at the begining
+		cleaned_categories.push("Other"); // Makes sure other is at the end
+
+		categories = cleaned_categories;
 	}
 	onMount(async () => {
 		// Get items
@@ -89,7 +102,7 @@
 </svelte:head>
 
 <div id="top" class="defaults theme-1">
-	<div id="nav-bar">
+	<div id="nav-bar" bind:clientHeight={nav_bar_height}>
 		{#each categories as category}
 			<Category
 				name={category}
@@ -98,7 +111,7 @@
 			/>
 		{/each}
 	</div>
-	<main>
+	<main style="padding-top: {nav_bar_height}px">
 		{#each items as item}
 			{#if item.categories.includes(shown_category)}
 				<Item
@@ -121,6 +134,7 @@
 
 	#top {
 		background-color: var(--background-color);
+		min-height: 100vh;
 	}
 
 	main {
@@ -128,7 +142,6 @@
 		flex-wrap: wrap;
 		flex-shrink: 1;
 		justify-content: center;
-		padding-top: 50px;
 	}
 
 	#nav-bar {
@@ -141,6 +154,7 @@
 		align-items: center;
 		background-color: var(--header-background-color);
 		flex-wrap: wrap;
-		padding: 5px 15px;
+		padding: 10px 15px;
+		border-bottom: 3px solid var(--border-color);
 	}
 </style>

@@ -75,6 +75,62 @@ var app = (function () {
     function children(element) {
         return Array.from(element.childNodes);
     }
+    function set_style(node, key, value, important) {
+        node.style.setProperty(key, value, important ? 'important' : '');
+    }
+    // unfortunately this can't be a constant as that wouldn't be tree-shakeable
+    // so we cache the result instead
+    let crossorigin;
+    function is_crossorigin() {
+        if (crossorigin === undefined) {
+            crossorigin = false;
+            try {
+                if (typeof window !== 'undefined' && window.parent) {
+                    void window.parent.document;
+                }
+            }
+            catch (error) {
+                crossorigin = true;
+            }
+        }
+        return crossorigin;
+    }
+    function add_resize_listener(node, fn) {
+        const computed_style = getComputedStyle(node);
+        if (computed_style.position === 'static') {
+            node.style.position = 'relative';
+        }
+        const iframe = element('iframe');
+        iframe.setAttribute('style', 'display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; ' +
+            'overflow: hidden; border: 0; opacity: 0; pointer-events: none; z-index: -1;');
+        iframe.setAttribute('aria-hidden', 'true');
+        iframe.tabIndex = -1;
+        const crossorigin = is_crossorigin();
+        let unsubscribe;
+        if (crossorigin) {
+            iframe.src = "data:text/html,<script>onresize=function(){parent.postMessage(0,'*')}</script>";
+            unsubscribe = listen(window, 'message', (event) => {
+                if (event.source === iframe.contentWindow)
+                    fn();
+            });
+        }
+        else {
+            iframe.src = 'about:blank';
+            iframe.onload = () => {
+                unsubscribe = listen(iframe.contentWindow, 'resize', fn);
+            };
+        }
+        append(node, iframe);
+        return () => {
+            if (crossorigin) {
+                unsubscribe();
+            }
+            else if (unsubscribe && iframe.contentWindow) {
+                unsubscribe();
+            }
+            detach(iframe);
+        };
+    }
     function toggle_class(element, name, toggle) {
         element.classList[toggle ? 'add' : 'remove'](name);
     }
@@ -638,7 +694,7 @@ var app = (function () {
     			button = element("button");
     			t = text(/*name*/ ctx[0]);
     			attr_dev(button, "id", /*name*/ ctx[0]);
-    			attr_dev(button, "class", "svelte-z62o9p");
+    			attr_dev(button, "class", "svelte-hki8rl");
     			toggle_class(button, "active", /*active*/ ctx[1]);
     			add_location(button, file$1, 5, 0, 77);
     		},
@@ -756,31 +812,31 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[6] = list[i];
+    	child_ctx[8] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[9] = list[i];
+    	child_ctx[11] = list[i];
     	return child_ctx;
     }
 
-    // (93:2) {#each categories as category}
+    // (106:2) {#each categories as category}
     function create_each_block_1(ctx) {
     	let category;
     	let current;
 
     	category = new Category({
     			props: {
-    				name: /*category*/ ctx[9],
-    				active: /*shown_category*/ ctx[2] === /*category*/ ctx[9].toLowerCase()
+    				name: /*category*/ ctx[11],
+    				active: /*shown_category*/ ctx[3] === /*category*/ ctx[11].toLowerCase()
     			},
     			$$inline: true
     		});
 
     	category.$on("click", function () {
-    		if (is_function(/*switch_category*/ ctx[4](/*category*/ ctx[9]))) /*switch_category*/ ctx[4](/*category*/ ctx[9]).apply(this, arguments);
+    		if (is_function(/*switch_category*/ ctx[5](/*category*/ ctx[11]))) /*switch_category*/ ctx[5](/*category*/ ctx[11]).apply(this, arguments);
     	});
 
     	const block = {
@@ -794,8 +850,8 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const category_changes = {};
-    			if (dirty & /*categories*/ 8) category_changes.name = /*category*/ ctx[9];
-    			if (dirty & /*shown_category, categories*/ 12) category_changes.active = /*shown_category*/ ctx[2] === /*category*/ ctx[9].toLowerCase();
+    			if (dirty & /*categories*/ 16) category_changes.name = /*category*/ ctx[11];
+    			if (dirty & /*shown_category, categories*/ 24) category_changes.active = /*shown_category*/ ctx[3] === /*category*/ ctx[11].toLowerCase();
     			category.$set(category_changes);
     		},
     		i: function intro(local) {
@@ -816,24 +872,24 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(93:2) {#each categories as category}",
+    		source: "(106:2) {#each categories as category}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (103:3) {#if item.categories.includes(shown_category)}
+    // (116:3) {#if item.categories.includes(shown_category)}
     function create_if_block(ctx) {
     	let item;
     	let current;
 
     	item = new Item({
     			props: {
-    				name: /*item*/ ctx[6].name,
-    				description: /*item*/ ctx[6].description,
-    				quantity: /*item*/ ctx[6].quantity,
-    				image_url: "https://tech-catalog-images.s3.us-west-1.amazonaws.com/" + /*item*/ ctx[6].key + ".png"
+    				name: /*item*/ ctx[8].name,
+    				description: /*item*/ ctx[8].description,
+    				quantity: /*item*/ ctx[8].quantity,
+    				image_url: "https://tech-catalog-images.s3.us-west-1.amazonaws.com/" + /*item*/ ctx[8].key + ".png"
     			},
     			$$inline: true
     		});
@@ -848,10 +904,10 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const item_changes = {};
-    			if (dirty & /*items*/ 1) item_changes.name = /*item*/ ctx[6].name;
-    			if (dirty & /*items*/ 1) item_changes.description = /*item*/ ctx[6].description;
-    			if (dirty & /*items*/ 1) item_changes.quantity = /*item*/ ctx[6].quantity;
-    			if (dirty & /*items*/ 1) item_changes.image_url = "https://tech-catalog-images.s3.us-west-1.amazonaws.com/" + /*item*/ ctx[6].key + ".png";
+    			if (dirty & /*items*/ 1) item_changes.name = /*item*/ ctx[8].name;
+    			if (dirty & /*items*/ 1) item_changes.description = /*item*/ ctx[8].description;
+    			if (dirty & /*items*/ 1) item_changes.quantity = /*item*/ ctx[8].quantity;
+    			if (dirty & /*items*/ 1) item_changes.image_url = "https://tech-catalog-images.s3.us-west-1.amazonaws.com/" + /*item*/ ctx[8].key + ".png";
     			item.$set(item_changes);
     		},
     		i: function intro(local) {
@@ -872,16 +928,16 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(103:3) {#if item.categories.includes(shown_category)}",
+    		source: "(116:3) {#if item.categories.includes(shown_category)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (102:2) {#each items as item}
+    // (115:2) {#each items as item}
     function create_each_block(ctx) {
-    	let show_if = /*item*/ ctx[6].categories.includes(/*shown_category*/ ctx[2]);
+    	let show_if = /*item*/ ctx[8].categories.includes(/*shown_category*/ ctx[3]);
     	let if_block_anchor;
     	let current;
     	let if_block = show_if && create_if_block(ctx);
@@ -897,13 +953,13 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*items, shown_category*/ 5) show_if = /*item*/ ctx[6].categories.includes(/*shown_category*/ ctx[2]);
+    			if (dirty & /*items, shown_category*/ 9) show_if = /*item*/ ctx[8].categories.includes(/*shown_category*/ ctx[3]);
 
     			if (show_if) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
-    					if (dirty & /*items, shown_category*/ 5) {
+    					if (dirty & /*items, shown_category*/ 9) {
     						transition_in(if_block, 1);
     					}
     				} else {
@@ -941,7 +997,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(102:2) {#each items as item}",
+    		source: "(115:2) {#each items as item}",
     		ctx
     	});
 
@@ -954,10 +1010,11 @@ var app = (function () {
     	let t0;
     	let div1;
     	let div0;
+    	let div0_resize_listener;
     	let t1;
     	let main;
     	let current;
-    	let each_value_1 = /*categories*/ ctx[3];
+    	let each_value_1 = /*categories*/ ctx[4];
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
 
@@ -1000,16 +1057,18 @@ var app = (function () {
     			}
 
     			script.async = true;
-    			if (!src_url_equal(script.src, script_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[1])) attr_dev(script, "src", script_src_value);
-    			add_location(script, file, 85, 1, 1828);
+    			if (!src_url_equal(script.src, script_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[2])) attr_dev(script, "src", script_src_value);
+    			add_location(script, file, 98, 1, 2197);
     			attr_dev(div0, "id", "nav-bar");
-    			attr_dev(div0, "class", "svelte-nk8x1y");
-    			add_location(div0, file, 91, 1, 1980);
-    			attr_dev(main, "class", "svelte-nk8x1y");
-    			add_location(main, file, 100, 1, 2186);
+    			attr_dev(div0, "class", "svelte-pfsk0k");
+    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[6].call(div0));
+    			add_location(div0, file, 104, 1, 2349);
+    			set_style(main, "padding-top", /*nav_bar_height*/ ctx[1] + "px");
+    			attr_dev(main, "class", "svelte-pfsk0k");
+    			add_location(main, file, 113, 1, 2590);
     			attr_dev(div1, "id", "top");
-    			attr_dev(div1, "class", "defaults theme-1 svelte-nk8x1y");
-    			add_location(div1, file, 90, 0, 1939);
+    			attr_dev(div1, "class", "defaults theme-1 svelte-pfsk0k");
+    			add_location(div1, file, 103, 0, 2308);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1024,6 +1083,7 @@ var app = (function () {
     				each_blocks_1[i].m(div0, null);
     			}
 
+    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[6].bind(div0));
     			append_dev(div1, t1);
     			append_dev(div1, main);
 
@@ -1034,12 +1094,12 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (!current || dirty & /*measurement_id*/ 2 && !src_url_equal(script.src, script_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[1])) {
+    			if (!current || dirty & /*measurement_id*/ 4 && !src_url_equal(script.src, script_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[2])) {
     				attr_dev(script, "src", script_src_value);
     			}
 
-    			if (dirty & /*categories, shown_category, switch_category*/ 28) {
-    				each_value_1 = /*categories*/ ctx[3];
+    			if (dirty & /*categories, shown_category, switch_category*/ 56) {
+    				each_value_1 = /*categories*/ ctx[4];
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -1066,7 +1126,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty & /*items, shown_category*/ 5) {
+    			if (dirty & /*items, shown_category*/ 9) {
     				each_value = /*items*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
@@ -1092,6 +1152,10 @@ var app = (function () {
     				}
 
     				check_outros();
+    			}
+
+    			if (!current || dirty & /*nav_bar_height*/ 2) {
+    				set_style(main, "padding-top", /*nav_bar_height*/ ctx[1] + "px");
     			}
     		},
     		i: function intro(local) {
@@ -1127,6 +1191,7 @@ var app = (function () {
     			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(div1);
     			destroy_each(each_blocks_1, detaching);
+    			div0_resize_listener();
     			destroy_each(each_blocks, detaching);
     		}
     	};
@@ -1156,6 +1221,7 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
     	let theme = localStorage.getItem("theme");
+    	let nav_bar_height = 58;
 
     	// Assign theme if necessary
     	if (theme === null) {
@@ -1195,7 +1261,7 @@ var app = (function () {
 
     	function switch_category(category) {
     		category = category.toLowerCase();
-    		$$invalidate(2, shown_category = category);
+    		$$invalidate(3, shown_category = category);
     		gtag("event", "switch_category", { category });
     	}
 
@@ -1205,12 +1271,18 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<App> was created with unknown prop '${key}'`);
     	});
 
+    	function div0_elementresize_handler() {
+    		nav_bar_height = this.clientHeight;
+    		$$invalidate(1, nav_bar_height);
+    	}
+
     	$$self.$capture_state = () => ({
     		Item,
     		Category,
     		onMount,
     		toTitleCase,
     		theme,
+    		nav_bar_height,
     		measurement_id,
     		shown_category,
     		items,
@@ -1221,10 +1293,11 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ('theme' in $$props) theme = $$props.theme;
-    		if ('measurement_id' in $$props) $$invalidate(1, measurement_id = $$props.measurement_id);
-    		if ('shown_category' in $$props) $$invalidate(2, shown_category = $$props.shown_category);
+    		if ('nav_bar_height' in $$props) $$invalidate(1, nav_bar_height = $$props.nav_bar_height);
+    		if ('measurement_id' in $$props) $$invalidate(2, measurement_id = $$props.measurement_id);
+    		if ('shown_category' in $$props) $$invalidate(3, shown_category = $$props.shown_category);
     		if ('items' in $$props) $$invalidate(0, items = $$props.items);
-    		if ('categories' in $$props) $$invalidate(3, categories = $$props.categories);
+    		if ('categories' in $$props) $$invalidate(4, categories = $$props.categories);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -1246,12 +1319,31 @@ var app = (function () {
     					});
     				});
 
-    				$$invalidate(3, categories = generating_categories);
+    				let cleaned_categories = generating_categories.filter(category => {
+    					if (category === "All" || category === "Other") {
+    						return false;
+    					}
+
+    					return true;
+    				});
+
+    				cleaned_categories.sort();
+    				cleaned_categories.unshift("All"); // Makes sure all is at the begining
+    				cleaned_categories.push("Other"); // Makes sure other is at the end
+    				$$invalidate(4, categories = cleaned_categories);
     			}
     		}
     	};
 
-    	return [items, measurement_id, shown_category, categories, switch_category];
+    	return [
+    		items,
+    		nav_bar_height,
+    		measurement_id,
+    		shown_category,
+    		categories,
+    		switch_category,
+    		div0_elementresize_handler
+    	];
     }
 
     class App extends SvelteComponentDev {

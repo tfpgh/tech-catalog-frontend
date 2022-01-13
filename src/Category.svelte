@@ -7,7 +7,7 @@
 
 <style>
     button {
-        background-color: var(--background-color);
+        background-color: var(--secondary-background-color);
         font-family: var(--secondary-font);
         height: 3rem;
         color: var(--main-text-color);
@@ -19,11 +19,11 @@
     }
 
     button:hover {
-        border-color: var(--main-text-color);
+        border-color: var(--secondary-text-color);
     }
 
     .active {
-        background-color: var(--border-color);
-        color: var(--background-color);
+        background-color: var(--secondary-text-color);
+        color: var(--header-background);
     }
 </style>
