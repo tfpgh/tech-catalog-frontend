@@ -6,10 +6,12 @@
 </script>
 
 <div>
-    <h1 id="name">{name}</h1>
-    <p id="description">{description}</p>
-    <p id="quantity">Quantity: {quantity}</p>
-    <img src={image_url} alt={description} />
+    <h1 id="name" class="flex-basis-100 margin-tb">{name}</h1>
+    <p id="description" class="flex-basis-100 margin-tb">{description}</p>
+    <p id="quantity" class="flex-basis-100 margin-tb">
+        Quantity: {quantity}
+    </p>
+    <img src={image_url} alt={description} class="flex-basis-100 margin-tb" />
 </div>
 
 <style>
@@ -26,6 +28,19 @@
         padding-top: 0;
         margin: 15px;
         flex-grow: 1;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .flex-basis-100 {
+        flex-basis: 100%;
+    }
+
+    .margin-tb {
+        margin-top: 0.4rem;
+        margin-bottom: 0.4rem;
     }
 
     h1 {

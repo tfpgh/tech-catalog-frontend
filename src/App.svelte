@@ -28,6 +28,8 @@
 		measurement_id = "G-EK34GRCELG";
 	}
 
+	localStorage.setItem("measurement_id", measurement_id);
+
 	let shown_category = "all";
 
 	let items = [];
@@ -73,9 +75,10 @@
 		}
 		gtag("js", new Date());
 
-		gtag("config", { measurement_id });
+		gtag("config", localStorage.getItem("measurement_id"));
 	</script>
 </svelte:head>
+
 <div id="top" class="defaults theme-1">
 	<div id="nav-bar">
 		{#each categories as category}
