@@ -62,21 +62,30 @@
 			top.classList.remove("theme-1");
 		}
 	});
+
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+
+	gtag("js", new Date());
+
+	gtag("config", localStorage.getItem("measurement_id"));
+
+	function switch_category(category) {
+		category = category.toLowerCase();
+
+		shown_category = category;
+		gtag("event", "switch_category", {
+			category: category,
+		});
+	}
 </script>
 
 <svelte:head>
 	<script
 		async
 		src="https://www.googletagmanager.com/gtag/js?id={measurement_id}"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag("js", new Date());
-
-		gtag("config", localStorage.getItem("measurement_id"));
-	</script>
 </svelte:head>
 
 <div id="top" class="defaults theme-1">
@@ -85,7 +94,7 @@
 			<Category
 				name={category}
 				active={shown_category === category.toLowerCase()}
-				on:click={() => (shown_category = category.toLowerCase())}
+				on:click={switch_category(category)}
 			/>
 		{/each}
 	</div>

@@ -766,14 +766,10 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (84:2) {#each categories as category}
+    // (93:2) {#each categories as category}
     function create_each_block_1(ctx) {
     	let category;
     	let current;
-
-    	function click_handler() {
-    		return /*click_handler*/ ctx[4](/*category*/ ctx[9]);
-    	}
 
     	category = new Category({
     			props: {
@@ -783,7 +779,9 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	category.$on("click", click_handler);
+    	category.$on("click", function () {
+    		if (is_function(/*switch_category*/ ctx[4](/*category*/ ctx[9]))) /*switch_category*/ ctx[4](/*category*/ ctx[9]).apply(this, arguments);
+    	});
 
     	const block = {
     		c: function create() {
@@ -818,14 +816,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(84:2) {#each categories as category}",
+    		source: "(93:2) {#each categories as category}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (94:3) {#if item.categories.includes(shown_category)}
+    // (103:3) {#if item.categories.includes(shown_category)}
     function create_if_block(ctx) {
     	let item;
     	let current;
@@ -874,14 +872,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(94:3) {#if item.categories.includes(shown_category)}",
+    		source: "(103:3) {#if item.categories.includes(shown_category)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (93:2) {#each items as item}
+    // (102:2) {#each items as item}
     function create_each_block(ctx) {
     	let show_if = /*item*/ ctx[6].categories.includes(/*shown_category*/ ctx[2]);
     	let if_block_anchor;
@@ -943,7 +941,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(93:2) {#each items as item}",
+    		source: "(102:2) {#each items as item}",
     		ctx
     	});
 
@@ -951,13 +949,12 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
-    	let script0;
-    	let script0_src_value;
-    	let script1;
-    	let t1;
+    	let script;
+    	let script_src_value;
+    	let t0;
     	let div1;
     	let div0;
-    	let t2;
+    	let t1;
     	let main;
     	let current;
     	let each_value_1 = /*categories*/ ctx[3];
@@ -986,10 +983,8 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			script0 = element("script");
-    			script1 = element("script");
-    			script1.textContent = "window.dataLayer = window.dataLayer || [];\n\t\tfunction gtag() {\n\t\t\tdataLayer.push(arguments);\n\t\t}\n\t\tgtag(\"js\", new Date());\n\n\t\tgtag(\"config\", localStorage.getItem(\"measurement_id\"));";
-    			t1 = space();
+    			script = element("script");
+    			t0 = space();
     			div1 = element("div");
     			div0 = element("div");
 
@@ -997,33 +992,31 @@ var app = (function () {
     				each_blocks_1[i].c();
     			}
 
-    			t2 = space();
+    			t1 = space();
     			main = element("main");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			script0.async = true;
-    			if (!src_url_equal(script0.src, script0_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[1])) attr_dev(script0, "src", script0_src_value);
-    			add_location(script0, file, 67, 1, 1473);
-    			add_location(script1, file, 70, 1, 1569);
+    			script.async = true;
+    			if (!src_url_equal(script.src, script_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[1])) attr_dev(script, "src", script_src_value);
+    			add_location(script, file, 85, 1, 1828);
     			attr_dev(div0, "id", "nav-bar");
     			attr_dev(div0, "class", "svelte-nk8x1y");
-    			add_location(div0, file, 82, 1, 1830);
+    			add_location(div0, file, 91, 1, 1980);
     			attr_dev(main, "class", "svelte-nk8x1y");
-    			add_location(main, file, 91, 1, 2058);
+    			add_location(main, file, 100, 1, 2186);
     			attr_dev(div1, "id", "top");
     			attr_dev(div1, "class", "defaults theme-1 svelte-nk8x1y");
-    			add_location(div1, file, 81, 0, 1789);
+    			add_location(div1, file, 90, 0, 1939);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			append_dev(document_1.head, script0);
-    			append_dev(document_1.head, script1);
-    			insert_dev(target, t1, anchor);
+    			append_dev(document_1.head, script);
+    			insert_dev(target, t0, anchor);
     			insert_dev(target, div1, anchor);
     			append_dev(div1, div0);
 
@@ -1031,7 +1024,7 @@ var app = (function () {
     				each_blocks_1[i].m(div0, null);
     			}
 
-    			append_dev(div1, t2);
+    			append_dev(div1, t1);
     			append_dev(div1, main);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -1041,11 +1034,11 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (!current || dirty & /*measurement_id*/ 2 && !src_url_equal(script0.src, script0_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[1])) {
-    				attr_dev(script0, "src", script0_src_value);
+    			if (!current || dirty & /*measurement_id*/ 2 && !src_url_equal(script.src, script_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[1])) {
+    				attr_dev(script, "src", script_src_value);
     			}
 
-    			if (dirty & /*categories, shown_category*/ 12) {
+    			if (dirty & /*categories, shown_category, switch_category*/ 28) {
     				each_value_1 = /*categories*/ ctx[3];
     				validate_each_argument(each_value_1);
     				let i;
@@ -1130,9 +1123,8 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			detach_dev(script0);
-    			detach_dev(script1);
-    			if (detaching) detach_dev(t1);
+    			detach_dev(script);
+    			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(div1);
     			destroy_each(each_blocks_1, detaching);
     			destroy_each(each_blocks, detaching);
@@ -1154,6 +1146,10 @@ var app = (function () {
     	return string.toLowerCase().split(" ").map(word => {
     		return word.charAt(0).toUpperCase() + word.slice(1);
     	}).join(" ");
+    }
+
+    function gtag() {
+    	dataLayer.push(arguments);
     }
 
     function instance($$self, $$props, $$invalidate) {
@@ -1193,13 +1189,21 @@ var app = (function () {
     		}
     	});
 
+    	window.dataLayer = window.dataLayer || [];
+    	gtag("js", new Date());
+    	gtag("config", localStorage.getItem("measurement_id"));
+
+    	function switch_category(category) {
+    		category = category.toLowerCase();
+    		$$invalidate(2, shown_category = category);
+    		gtag("event", "switch_category", { category });
+    	}
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<App> was created with unknown prop '${key}'`);
     	});
-
-    	const click_handler = category => $$invalidate(2, shown_category = category.toLowerCase());
 
     	$$self.$capture_state = () => ({
     		Item,
@@ -1210,7 +1214,9 @@ var app = (function () {
     		measurement_id,
     		shown_category,
     		items,
-    		categories
+    		categories,
+    		gtag,
+    		switch_category
     	});
 
     	$$self.$inject_state = $$props => {
@@ -1245,7 +1251,7 @@ var app = (function () {
     		}
     	};
 
-    	return [items, measurement_id, shown_category, categories, click_handler];
+    	return [items, measurement_id, shown_category, categories, switch_category];
     }
 
     class App extends SvelteComponentDev {
