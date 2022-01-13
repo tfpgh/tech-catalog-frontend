@@ -822,7 +822,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (106:2) {#each categories as category}
+    // (107:2) {#each categories as category}
     function create_each_block_1(ctx) {
     	let category;
     	let current;
@@ -830,13 +830,13 @@ var app = (function () {
     	category = new Category({
     			props: {
     				name: /*category*/ ctx[11],
-    				active: /*shown_category*/ ctx[3] === /*category*/ ctx[11].toLowerCase()
+    				active: /*shown_category*/ ctx[4] === /*category*/ ctx[11].toLowerCase()
     			},
     			$$inline: true
     		});
 
     	category.$on("click", function () {
-    		if (is_function(/*switch_category*/ ctx[5](/*category*/ ctx[11]))) /*switch_category*/ ctx[5](/*category*/ ctx[11]).apply(this, arguments);
+    		if (is_function(/*switch_category*/ ctx[6](/*category*/ ctx[11]))) /*switch_category*/ ctx[6](/*category*/ ctx[11]).apply(this, arguments);
     	});
 
     	const block = {
@@ -850,8 +850,8 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const category_changes = {};
-    			if (dirty & /*categories*/ 16) category_changes.name = /*category*/ ctx[11];
-    			if (dirty & /*shown_category, categories*/ 24) category_changes.active = /*shown_category*/ ctx[3] === /*category*/ ctx[11].toLowerCase();
+    			if (dirty & /*categories*/ 32) category_changes.name = /*category*/ ctx[11];
+    			if (dirty & /*shown_category, categories*/ 48) category_changes.active = /*shown_category*/ ctx[4] === /*category*/ ctx[11].toLowerCase();
     			category.$set(category_changes);
     		},
     		i: function intro(local) {
@@ -872,14 +872,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(106:2) {#each categories as category}",
+    		source: "(107:2) {#each categories as category}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (116:3) {#if item.categories.includes(shown_category)}
+    // (117:3) {#if item.categories.includes(shown_category)}
     function create_if_block(ctx) {
     	let item;
     	let current;
@@ -928,16 +928,16 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(116:3) {#if item.categories.includes(shown_category)}",
+    		source: "(117:3) {#if item.categories.includes(shown_category)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (115:2) {#each items as item}
+    // (116:2) {#each items as item}
     function create_each_block(ctx) {
-    	let show_if = /*item*/ ctx[8].categories.includes(/*shown_category*/ ctx[3]);
+    	let show_if = /*item*/ ctx[8].categories.includes(/*shown_category*/ ctx[4]);
     	let if_block_anchor;
     	let current;
     	let if_block = show_if && create_if_block(ctx);
@@ -953,13 +953,13 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*items, shown_category*/ 9) show_if = /*item*/ ctx[8].categories.includes(/*shown_category*/ ctx[3]);
+    			if (dirty & /*items, shown_category*/ 17) show_if = /*item*/ ctx[8].categories.includes(/*shown_category*/ ctx[4]);
 
     			if (show_if) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
-    					if (dirty & /*items, shown_category*/ 9) {
+    					if (dirty & /*items, shown_category*/ 17) {
     						transition_in(if_block, 1);
     					}
     				} else {
@@ -997,7 +997,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(115:2) {#each items as item}",
+    		source: "(116:2) {#each items as item}",
     		ctx
     	});
 
@@ -1005,6 +1005,7 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
+    	let title_value;
     	let script;
     	let script_src_value;
     	let t0;
@@ -1014,7 +1015,8 @@ var app = (function () {
     	let t1;
     	let main;
     	let current;
-    	let each_value_1 = /*categories*/ ctx[4];
+    	document_1.title = title_value = "Logan Tech Catalog Theme " + /*theme*/ ctx[1];
+    	let each_value_1 = /*categories*/ ctx[5];
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
 
@@ -1057,18 +1059,18 @@ var app = (function () {
     			}
 
     			script.async = true;
-    			if (!src_url_equal(script.src, script_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[2])) attr_dev(script, "src", script_src_value);
-    			add_location(script, file, 98, 1, 2197);
+    			if (!src_url_equal(script.src, script_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[3])) attr_dev(script, "src", script_src_value);
+    			add_location(script, file, 99, 1, 2246);
     			attr_dev(div0, "id", "nav-bar");
     			attr_dev(div0, "class", "svelte-pfsk0k");
-    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[6].call(div0));
-    			add_location(div0, file, 104, 1, 2349);
-    			set_style(main, "padding-top", /*nav_bar_height*/ ctx[1] + "px");
+    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[7].call(div0));
+    			add_location(div0, file, 105, 1, 2398);
+    			set_style(main, "padding-top", /*nav_bar_height*/ ctx[2] + "px");
     			attr_dev(main, "class", "svelte-pfsk0k");
-    			add_location(main, file, 113, 1, 2590);
+    			add_location(main, file, 114, 1, 2639);
     			attr_dev(div1, "id", "top");
     			attr_dev(div1, "class", "defaults theme-1 svelte-pfsk0k");
-    			add_location(div1, file, 103, 0, 2308);
+    			add_location(div1, file, 104, 0, 2357);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1083,7 +1085,7 @@ var app = (function () {
     				each_blocks_1[i].m(div0, null);
     			}
 
-    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[6].bind(div0));
+    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[7].bind(div0));
     			append_dev(div1, t1);
     			append_dev(div1, main);
 
@@ -1094,12 +1096,16 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (!current || dirty & /*measurement_id*/ 4 && !src_url_equal(script.src, script_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[2])) {
+    			if ((!current || dirty & /*theme*/ 2) && title_value !== (title_value = "Logan Tech Catalog Theme " + /*theme*/ ctx[1])) {
+    				document_1.title = title_value;
+    			}
+
+    			if (!current || dirty & /*measurement_id*/ 8 && !src_url_equal(script.src, script_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[3])) {
     				attr_dev(script, "src", script_src_value);
     			}
 
-    			if (dirty & /*categories, shown_category, switch_category*/ 56) {
-    				each_value_1 = /*categories*/ ctx[4];
+    			if (dirty & /*categories, shown_category, switch_category*/ 112) {
+    				each_value_1 = /*categories*/ ctx[5];
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -1126,7 +1132,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty & /*items, shown_category*/ 9) {
+    			if (dirty & /*items, shown_category*/ 17) {
     				each_value = /*items*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
@@ -1154,8 +1160,8 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty & /*nav_bar_height*/ 2) {
-    				set_style(main, "padding-top", /*nav_bar_height*/ ctx[1] + "px");
+    			if (!current || dirty & /*nav_bar_height*/ 4) {
+    				set_style(main, "padding-top", /*nav_bar_height*/ ctx[2] + "px");
     			}
     		},
     		i: function intro(local) {
@@ -1261,7 +1267,7 @@ var app = (function () {
 
     	function switch_category(category) {
     		category = category.toLowerCase();
-    		$$invalidate(3, shown_category = category);
+    		$$invalidate(4, shown_category = category);
     		gtag("event", "switch_category", { category });
     	}
 
@@ -1273,7 +1279,7 @@ var app = (function () {
 
     	function div0_elementresize_handler() {
     		nav_bar_height = this.clientHeight;
-    		$$invalidate(1, nav_bar_height);
+    		$$invalidate(2, nav_bar_height);
     	}
 
     	$$self.$capture_state = () => ({
@@ -1292,12 +1298,12 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('theme' in $$props) theme = $$props.theme;
-    		if ('nav_bar_height' in $$props) $$invalidate(1, nav_bar_height = $$props.nav_bar_height);
-    		if ('measurement_id' in $$props) $$invalidate(2, measurement_id = $$props.measurement_id);
-    		if ('shown_category' in $$props) $$invalidate(3, shown_category = $$props.shown_category);
+    		if ('theme' in $$props) $$invalidate(1, theme = $$props.theme);
+    		if ('nav_bar_height' in $$props) $$invalidate(2, nav_bar_height = $$props.nav_bar_height);
+    		if ('measurement_id' in $$props) $$invalidate(3, measurement_id = $$props.measurement_id);
+    		if ('shown_category' in $$props) $$invalidate(4, shown_category = $$props.shown_category);
     		if ('items' in $$props) $$invalidate(0, items = $$props.items);
-    		if ('categories' in $$props) $$invalidate(4, categories = $$props.categories);
+    		if ('categories' in $$props) $$invalidate(5, categories = $$props.categories);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -1330,13 +1336,14 @@ var app = (function () {
     				cleaned_categories.sort();
     				cleaned_categories.unshift("All"); // Makes sure all is at the begining
     				cleaned_categories.push("Other"); // Makes sure other is at the end
-    				$$invalidate(4, categories = cleaned_categories);
+    				$$invalidate(5, categories = cleaned_categories);
     			}
     		}
     	};
 
     	return [
     		items,
+    		theme,
     		nav_bar_height,
     		measurement_id,
     		shown_category,

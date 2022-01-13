@@ -96,6 +96,7 @@
 </script>
 
 <svelte:head>
+	<title>Logan Tech Catalog Theme {theme}</title>
 	<script
 		async
 		src="https://www.googletagmanager.com/gtag/js?id={measurement_id}"></script>
