@@ -113,8 +113,7 @@
 			/>
 		{/each}
 		<p id="asterisk-info">
-			<span id="asterisk">*</span> = Not checkoutable from Brie. You have to
-			work with her to use this.
+			<span id="asterisk">*</span> = Not available for checkout. For projects with tech teacher only.
 		</p>
 	</div>
 	<main style="padding-top: {nav_bar_height}px">
