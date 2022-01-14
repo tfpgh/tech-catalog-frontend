@@ -508,7 +508,7 @@ var app = (function () {
     			t = text(/*name*/ ctx[0]);
     			attr_dev(h1, "id", "name");
     			attr_dev(h1, "class", "flex-basis-100 margin-tb svelte-12piast");
-    			add_location(h1, file$2, 34, 12, 904);
+    			add_location(h1, file$2, 34, 12, 902);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -547,10 +547,10 @@ var app = (function () {
     			span.textContent = "*";
     			attr_dev(span, "id", "asterisk");
     			attr_dev(span, "class", "svelte-12piast");
-    			add_location(span, file$2, 31, 22, 829);
+    			add_location(span, file$2, 31, 22, 827);
     			attr_dev(h1, "id", "name");
     			attr_dev(h1, "class", "flex-basis-100 margin-tb svelte-12piast");
-    			add_location(h1, file$2, 30, 12, 759);
+    			add_location(h1, file$2, 30, 12, 757);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -614,17 +614,17 @@ var app = (function () {
     			img = element("img");
     			attr_dev(p0, "id", "description");
     			attr_dev(p0, "class", "flex-basis-100 margin-tb svelte-12piast");
-    			add_location(p0, file$2, 36, 8, 985);
+    			add_location(p0, file$2, 36, 8, 983);
     			attr_dev(p1, "id", "quantity");
     			attr_dev(p1, "class", "flex-basis-100 margin-tb svelte-12piast");
-    			add_location(p1, file$2, 37, 8, 1064);
-    			add_location(span, file$2, 28, 4, 712);
+    			add_location(p1, file$2, 37, 8, 1062);
+    			add_location(span, file$2, 28, 4, 710);
     			if (!src_url_equal(img.src, img_src_value = /*image_url*/ ctx[4])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", /*description*/ ctx[1]);
     			attr_dev(img, "class", "flex-basis-100 margin-tb svelte-12piast");
-    			add_location(img, file$2, 41, 4, 1177);
+    			add_location(img, file$2, 41, 4, 1175);
     			attr_dev(div, "class", "svelte-12piast");
-    			add_location(div, file$2, 27, 0, 702);
+    			add_location(div, file$2, 27, 0, 700);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -705,8 +705,8 @@ var app = (function () {
     		if (rotation % 2 === 0) {
     			$$invalidate(5, image.style.margin = "0px 0px", image);
     		} else {
-    			let offset = (image.width - image.height) / 2;
-    			$$invalidate(5, image.style.margin = offset + "px 0px", image);
+    			let offset = image.width - image.height;
+    			$$invalidate(5, image.style.margin = offset / 2 + "px 0px", image);
     		}
     	}
 
@@ -1044,7 +1044,7 @@ var app = (function () {
     	return block;
     }
 
-    // (122:3) {#if item.categories.includes(shown_category)}
+    // (121:3) {#if item.categories.includes(shown_category)}
     function create_if_block(ctx) {
     	let item;
     	let current;
@@ -1097,14 +1097,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(122:3) {#if item.categories.includes(shown_category)}",
+    		source: "(121:3) {#if item.categories.includes(shown_category)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (121:2) {#each items as item}
+    // (120:2) {#each items as item}
     function create_each_block(ctx) {
     	let show_if = /*item*/ ctx[8].categories.includes(/*shown_category*/ ctx[4]);
     	let if_block_anchor;
@@ -1166,7 +1166,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(121:2) {#each items as item}",
+    		source: "(120:2) {#each items as item}",
     		ctx
     	});
 
@@ -1228,7 +1228,7 @@ var app = (function () {
     			p = element("p");
     			span = element("span");
     			span.textContent = "*";
-    			t3 = text(" = Not checkoutable from Brie. You have to\n\t\t\twork with her to use this.");
+    			t3 = text(" = Not available for checkout. For projects with tech teacher only.");
     			t4 = space();
     			main = element("main");
 
@@ -1251,7 +1251,7 @@ var app = (function () {
     			add_location(div0, file, 106, 1, 2399);
     			set_style(main, "padding-top", /*nav_bar_height*/ ctx[2] + "px");
     			attr_dev(main, "class", "svelte-1ih2o7a");
-    			add_location(main, file, 119, 1, 2776);
+    			add_location(main, file, 118, 1, 2771);
     			attr_dev(div1, "id", "top");
     			attr_dev(div1, "class", "defaults theme-1 svelte-1ih2o7a");
     			add_location(div1, file, 105, 0, 2358);

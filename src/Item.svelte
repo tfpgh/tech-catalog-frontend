@@ -15,8 +15,8 @@
         if (rotation % 2 === 0) {
             image.style.margin = "0px 0px";
         } else {
-            let offset = (image.width - image.height) / 2;
-            image.style.margin = offset + "px 0px";
+            let offset = image.width - image.height;
+            image.style.margin = offset / 2 + "px 0px";
         }
     }
 
