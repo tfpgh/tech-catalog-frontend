@@ -125,6 +125,7 @@
 					description={item.description}
 					quantity={item.quantity}
 					checkoutable={item.checkoutable}
+					rotation={item.rotation}
 					image_url={"https://tech-catalog-images.s3.us-west-1.amazonaws.com/" +
 						item.key +
 						".png"}
@@ -154,6 +155,7 @@
 	#nav-bar {
 		display: flex;
 		position: fixed;
+		z-index: 10;
 		top: 0px;
 		left: 0px;
 		width: 100%;
