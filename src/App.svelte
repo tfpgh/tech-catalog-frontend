@@ -66,6 +66,7 @@
 		const res = await fetch(
 			"https://tech-catalog-backend.herokuapp.com/get_items"
 		);
+
 		items = await res.json();
 
 		if (theme != "1") {
@@ -111,6 +112,10 @@
 				on:click={switch_category(category)}
 			/>
 		{/each}
+		<p id="asterisk-info">
+			<span id="asterisk">*</span> = Not checkoutable from Brie. You have to
+			work with her to use this.
+		</p>
 	</div>
 	<main style="padding-top: {nav_bar_height}px">
 		{#each items as item}
@@ -119,6 +124,7 @@
 					name={item.name}
 					description={item.description}
 					quantity={item.quantity}
+					checkoutable={item.checkoutable}
 					image_url={"https://tech-catalog-images.s3.us-west-1.amazonaws.com/" +
 						item.key +
 						".png"}
@@ -157,5 +163,16 @@
 		flex-wrap: wrap;
 		padding: 10px 15px;
 		border-bottom: 3px solid var(--border-color);
+	}
+
+	#asterisk {
+		color: #ff4136;
+		font-size: 2rem;
+	}
+
+	#asterisk-info {
+		font-family: var(--main-font);
+		color: var(--main-text-color);
+		justify-self: right;
 	}
 </style>

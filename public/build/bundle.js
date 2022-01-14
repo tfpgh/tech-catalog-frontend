@@ -1,5 +1,5 @@
 
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 var app = (function () {
     'use strict';
 
@@ -498,74 +498,165 @@ var app = (function () {
 
     const file$2 = "src/Item.svelte";
 
-    function create_fragment$2(ctx) {
-    	let div;
+    // (14:4) {:else}
+    function create_else_block(ctx) {
+    	let h1;
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			h1 = element("h1");
+    			t = text(/*name*/ ctx[0]);
+    			attr_dev(h1, "id", "name");
+    			attr_dev(h1, "class", "flex-basis-100 margin-tb svelte-12piast");
+    			add_location(h1, file$2, 14, 8, 407);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, h1, anchor);
+    			append_dev(h1, t);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*name*/ 1) set_data_dev(t, /*name*/ ctx[0]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(14:4) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (10:4) {#if !checkoutable}
+    function create_if_block$1(ctx) {
     	let h1;
     	let t0;
-    	let t1;
+    	let span;
+
+    	const block = {
+    		c: function create() {
+    			h1 = element("h1");
+    			t0 = text(/*name*/ ctx[0]);
+    			span = element("span");
+    			span.textContent = "*";
+    			attr_dev(span, "id", "asterisk");
+    			attr_dev(span, "class", "svelte-12piast");
+    			add_location(span, file$2, 11, 18, 344);
+    			attr_dev(h1, "id", "name");
+    			attr_dev(h1, "class", "flex-basis-100 margin-tb svelte-12piast");
+    			add_location(h1, file$2, 10, 8, 278);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, h1, anchor);
+    			append_dev(h1, t0);
+    			append_dev(h1, span);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*name*/ 1) set_data_dev(t0, /*name*/ ctx[0]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(10:4) {#if !checkoutable}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$2(ctx) {
+    	let div;
+    	let t0;
     	let p0;
+    	let t1;
     	let t2;
-    	let t3;
     	let p1;
+    	let t3;
     	let t4;
     	let t5;
-    	let t6;
     	let img;
     	let img_src_value;
+
+    	function select_block_type(ctx, dirty) {
+    		if (!/*checkoutable*/ ctx[3]) return create_if_block$1;
+    		return create_else_block;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			h1 = element("h1");
-    			t0 = text(/*name*/ ctx[0]);
-    			t1 = space();
+    			if_block.c();
+    			t0 = space();
     			p0 = element("p");
-    			t2 = text(/*description*/ ctx[1]);
-    			t3 = space();
+    			t1 = text(/*description*/ ctx[1]);
+    			t2 = space();
     			p1 = element("p");
-    			t4 = text("Quantity: ");
-    			t5 = text(/*quantity*/ ctx[2]);
-    			t6 = space();
+    			t3 = text("Quantity: ");
+    			t4 = text(/*quantity*/ ctx[2]);
+    			t5 = space();
     			img = element("img");
-    			attr_dev(h1, "id", "name");
-    			attr_dev(h1, "class", "flex-basis-100 margin-tb svelte-q6f5md");
-    			add_location(h1, file$2, 8, 4, 214);
     			attr_dev(p0, "id", "description");
-    			attr_dev(p0, "class", "flex-basis-100 margin-tb svelte-q6f5md");
-    			add_location(p0, file$2, 9, 4, 277);
+    			attr_dev(p0, "class", "flex-basis-100 margin-tb svelte-12piast");
+    			add_location(p0, file$2, 16, 4, 480);
     			attr_dev(p1, "id", "quantity");
-    			attr_dev(p1, "class", "flex-basis-100 margin-tb svelte-q6f5md");
-    			add_location(p1, file$2, 10, 4, 352);
-    			if (!src_url_equal(img.src, img_src_value = /*image_url*/ ctx[3])) attr_dev(img, "src", img_src_value);
+    			attr_dev(p1, "class", "flex-basis-100 margin-tb svelte-12piast");
+    			add_location(p1, file$2, 17, 4, 555);
+    			if (!src_url_equal(img.src, img_src_value = /*image_url*/ ctx[4])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", /*description*/ ctx[1]);
-    			attr_dev(img, "class", "flex-basis-100 margin-tb svelte-q6f5md");
-    			add_location(img, file$2, 13, 4, 445);
-    			attr_dev(div, "class", "svelte-q6f5md");
-    			add_location(div, file$2, 7, 0, 204);
+    			attr_dev(img, "class", "flex-basis-100 margin-tb svelte-12piast");
+    			add_location(img, file$2, 20, 4, 648);
+    			attr_dev(div, "class", "svelte-12piast");
+    			add_location(div, file$2, 8, 0, 240);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
-    			append_dev(div, h1);
-    			append_dev(h1, t0);
-    			append_dev(div, t1);
+    			if_block.m(div, null);
+    			append_dev(div, t0);
     			append_dev(div, p0);
-    			append_dev(p0, t2);
-    			append_dev(div, t3);
+    			append_dev(p0, t1);
+    			append_dev(div, t2);
     			append_dev(div, p1);
+    			append_dev(p1, t3);
     			append_dev(p1, t4);
-    			append_dev(p1, t5);
-    			append_dev(div, t6);
+    			append_dev(div, t5);
     			append_dev(div, img);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*name*/ 1) set_data_dev(t0, /*name*/ ctx[0]);
-    			if (dirty & /*description*/ 2) set_data_dev(t2, /*description*/ ctx[1]);
-    			if (dirty & /*quantity*/ 4) set_data_dev(t5, /*quantity*/ ctx[2]);
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
 
-    			if (dirty & /*image_url*/ 8 && !src_url_equal(img.src, img_src_value = /*image_url*/ ctx[3])) {
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(div, t0);
+    				}
+    			}
+
+    			if (dirty & /*description*/ 2) set_data_dev(t1, /*description*/ ctx[1]);
+    			if (dirty & /*quantity*/ 4) set_data_dev(t4, /*quantity*/ ctx[2]);
+
+    			if (dirty & /*image_url*/ 16 && !src_url_equal(img.src, img_src_value = /*image_url*/ ctx[4])) {
     				attr_dev(img, "src", img_src_value);
     			}
 
@@ -577,6 +668,7 @@ var app = (function () {
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
+    			if_block.d();
     		}
     	};
 
@@ -597,8 +689,9 @@ var app = (function () {
     	let { name = "Default Name" } = $$props;
     	let { description = "Default Description" } = $$props;
     	let { quantity = "42" } = $$props;
+    	let { checkoutable = true } = $$props;
     	let { image_url = "https://via.placeholder.com/720" } = $$props;
-    	const writable_props = ['name', 'description', 'quantity', 'image_url'];
+    	const writable_props = ['name', 'description', 'quantity', 'checkoutable', 'image_url'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Item> was created with unknown prop '${key}'`);
@@ -608,23 +701,31 @@ var app = (function () {
     		if ('name' in $$props) $$invalidate(0, name = $$props.name);
     		if ('description' in $$props) $$invalidate(1, description = $$props.description);
     		if ('quantity' in $$props) $$invalidate(2, quantity = $$props.quantity);
-    		if ('image_url' in $$props) $$invalidate(3, image_url = $$props.image_url);
+    		if ('checkoutable' in $$props) $$invalidate(3, checkoutable = $$props.checkoutable);
+    		if ('image_url' in $$props) $$invalidate(4, image_url = $$props.image_url);
     	};
 
-    	$$self.$capture_state = () => ({ name, description, quantity, image_url });
+    	$$self.$capture_state = () => ({
+    		name,
+    		description,
+    		quantity,
+    		checkoutable,
+    		image_url
+    	});
 
     	$$self.$inject_state = $$props => {
     		if ('name' in $$props) $$invalidate(0, name = $$props.name);
     		if ('description' in $$props) $$invalidate(1, description = $$props.description);
     		if ('quantity' in $$props) $$invalidate(2, quantity = $$props.quantity);
-    		if ('image_url' in $$props) $$invalidate(3, image_url = $$props.image_url);
+    		if ('checkoutable' in $$props) $$invalidate(3, checkoutable = $$props.checkoutable);
+    		if ('image_url' in $$props) $$invalidate(4, image_url = $$props.image_url);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [name, description, quantity, image_url];
+    	return [name, description, quantity, checkoutable, image_url];
     }
 
     class Item extends SvelteComponentDev {
@@ -635,7 +736,8 @@ var app = (function () {
     			name: 0,
     			description: 1,
     			quantity: 2,
-    			image_url: 3
+    			checkoutable: 3,
+    			image_url: 4
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -667,6 +769,14 @@ var app = (function () {
     	}
 
     	set quantity(value) {
+    		throw new Error("<Item>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get checkoutable() {
+    		throw new Error("<Item>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set checkoutable(value) {
     		throw new Error("<Item>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -822,7 +932,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (107:2) {#each categories as category}
+    // (108:2) {#each categories as category}
     function create_each_block_1(ctx) {
     	let category;
     	let current;
@@ -872,14 +982,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(107:2) {#each categories as category}",
+    		source: "(108:2) {#each categories as category}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (117:3) {#if item.categories.includes(shown_category)}
+    // (122:3) {#if item.categories.includes(shown_category)}
     function create_if_block(ctx) {
     	let item;
     	let current;
@@ -889,6 +999,7 @@ var app = (function () {
     				name: /*item*/ ctx[8].name,
     				description: /*item*/ ctx[8].description,
     				quantity: /*item*/ ctx[8].quantity,
+    				checkoutable: /*item*/ ctx[8].checkoutable,
     				image_url: "https://tech-catalog-images.s3.us-west-1.amazonaws.com/" + /*item*/ ctx[8].key + ".png"
     			},
     			$$inline: true
@@ -907,6 +1018,7 @@ var app = (function () {
     			if (dirty & /*items*/ 1) item_changes.name = /*item*/ ctx[8].name;
     			if (dirty & /*items*/ 1) item_changes.description = /*item*/ ctx[8].description;
     			if (dirty & /*items*/ 1) item_changes.quantity = /*item*/ ctx[8].quantity;
+    			if (dirty & /*items*/ 1) item_changes.checkoutable = /*item*/ ctx[8].checkoutable;
     			if (dirty & /*items*/ 1) item_changes.image_url = "https://tech-catalog-images.s3.us-west-1.amazonaws.com/" + /*item*/ ctx[8].key + ".png";
     			item.$set(item_changes);
     		},
@@ -928,14 +1040,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(117:3) {#if item.categories.includes(shown_category)}",
+    		source: "(122:3) {#if item.categories.includes(shown_category)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (116:2) {#each items as item}
+    // (121:2) {#each items as item}
     function create_each_block(ctx) {
     	let show_if = /*item*/ ctx[8].categories.includes(/*shown_category*/ ctx[4]);
     	let if_block_anchor;
@@ -997,7 +1109,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(116:2) {#each items as item}",
+    		source: "(121:2) {#each items as item}",
     		ctx
     	});
 
@@ -1011,8 +1123,12 @@ var app = (function () {
     	let t0;
     	let div1;
     	let div0;
-    	let div0_resize_listener;
     	let t1;
+    	let p;
+    	let span;
+    	let t3;
+    	let div0_resize_listener;
+    	let t4;
     	let main;
     	let current;
     	document_1.title = title_value = "Logan Tech Catalog Theme " + /*theme*/ ctx[1];
@@ -1052,6 +1168,11 @@ var app = (function () {
     			}
 
     			t1 = space();
+    			p = element("p");
+    			span = element("span");
+    			span.textContent = "*";
+    			t3 = text(" = Not checkoutable from Brie. You have to\n\t\t\twork with her to use this.");
+    			t4 = space();
     			main = element("main");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -1060,17 +1181,23 @@ var app = (function () {
 
     			script.async = true;
     			if (!src_url_equal(script.src, script_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[3])) attr_dev(script, "src", script_src_value);
-    			add_location(script, file, 99, 1, 2246);
+    			add_location(script, file, 100, 1, 2247);
+    			attr_dev(span, "id", "asterisk");
+    			attr_dev(span, "class", "svelte-1wg2oi3");
+    			add_location(span, file, 115, 3, 2659);
+    			attr_dev(p, "id", "asterisk-info");
+    			attr_dev(p, "class", "svelte-1wg2oi3");
+    			add_location(p, file, 114, 2, 2633);
     			attr_dev(div0, "id", "nav-bar");
-    			attr_dev(div0, "class", "svelte-pfsk0k");
+    			attr_dev(div0, "class", "svelte-1wg2oi3");
     			add_render_callback(() => /*div0_elementresize_handler*/ ctx[7].call(div0));
-    			add_location(div0, file, 105, 1, 2398);
+    			add_location(div0, file, 106, 1, 2399);
     			set_style(main, "padding-top", /*nav_bar_height*/ ctx[2] + "px");
-    			attr_dev(main, "class", "svelte-pfsk0k");
-    			add_location(main, file, 114, 1, 2639);
+    			attr_dev(main, "class", "svelte-1wg2oi3");
+    			add_location(main, file, 119, 1, 2776);
     			attr_dev(div1, "id", "top");
-    			attr_dev(div1, "class", "defaults theme-1 svelte-pfsk0k");
-    			add_location(div1, file, 104, 0, 2357);
+    			attr_dev(div1, "class", "defaults theme-1 svelte-1wg2oi3");
+    			add_location(div1, file, 105, 0, 2358);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1085,8 +1212,12 @@ var app = (function () {
     				each_blocks_1[i].m(div0, null);
     			}
 
+    			append_dev(div0, t1);
+    			append_dev(div0, p);
+    			append_dev(p, span);
+    			append_dev(p, t3);
     			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[7].bind(div0));
-    			append_dev(div1, t1);
+    			append_dev(div1, t4);
     			append_dev(div1, main);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -1119,7 +1250,7 @@ var app = (function () {
     						each_blocks_1[i] = create_each_block_1(child_ctx);
     						each_blocks_1[i].c();
     						transition_in(each_blocks_1[i], 1);
-    						each_blocks_1[i].m(div0, null);
+    						each_blocks_1[i].m(div0, t1);
     					}
     				}
 

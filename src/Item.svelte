@@ -2,11 +2,18 @@
     export let name = "Default Name";
     export let description = "Default Description";
     export let quantity = "42";
+    export let checkoutable = true;
     export let image_url = "https://via.placeholder.com/720";
 </script>
 
 <div>
-    <h1 id="name" class="flex-basis-100 margin-tb">{name}</h1>
+    {#if !checkoutable}
+        <h1 id="name" class="flex-basis-100 margin-tb">
+            {name}<span id="asterisk">*</span>
+        </h1>
+    {:else}
+        <h1 id="name" class="flex-basis-100 margin-tb">{name}</h1>
+    {/if}
     <p id="description" class="flex-basis-100 margin-tb">{description}</p>
     <p id="quantity" class="flex-basis-100 margin-tb">
         Quantity: {quantity}
@@ -56,5 +63,10 @@
     img {
         max-width: 95%;
         border-radius: var(--corner-radius);
+    }
+
+    #asterisk {
+        color: #ff4136;
+        font-size: 2rem;
     }
 </style>
