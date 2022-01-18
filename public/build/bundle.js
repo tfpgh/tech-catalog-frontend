@@ -987,7 +987,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (108:2) {#each categories as category}
+    // (120:4) {#each categories as category}
     function create_each_block_1(ctx) {
     	let category;
     	let current;
@@ -1037,14 +1037,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(108:2) {#each categories as category}",
+    		source: "(120:4) {#each categories as category}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (121:3) {#if item.categories.includes(shown_category)}
+    // (134:6) {#if item.categories.includes(shown_category)}
     function create_if_block(ctx) {
     	let item;
     	let current;
@@ -1097,14 +1097,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(121:3) {#if item.categories.includes(shown_category)}",
+    		source: "(134:6) {#if item.categories.includes(shown_category)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (120:2) {#each items as item}
+    // (133:4) {#each items as item}
     function create_each_block(ctx) {
     	let show_if = /*item*/ ctx[8].categories.includes(/*shown_category*/ ctx[4]);
     	let if_block_anchor;
@@ -1166,7 +1166,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(120:2) {#each items as item}",
+    		source: "(133:4) {#each items as item}",
     		ctx
     	});
 
@@ -1228,7 +1228,7 @@ var app = (function () {
     			p = element("p");
     			span = element("span");
     			span.textContent = "*";
-    			t3 = text(" = Not available for checkout. For projects with tech teacher only.");
+    			t3 = text(" = Not available for checkout. For projects with\n      tech teacher only.");
     			t4 = space();
     			main = element("main");
 
@@ -1238,23 +1238,23 @@ var app = (function () {
 
     			script.async = true;
     			if (!src_url_equal(script.src, script_src_value = "https://www.googletagmanager.com/gtag/js?id=" + /*measurement_id*/ ctx[3])) attr_dev(script, "src", script_src_value);
-    			add_location(script, file, 100, 1, 2247);
+    			add_location(script, file, 112, 2, 2660);
     			attr_dev(span, "id", "asterisk");
-    			attr_dev(span, "class", "svelte-1ih2o7a");
-    			add_location(span, file, 115, 3, 2659);
+    			attr_dev(span, "class", "svelte-s4v880");
+    			add_location(span, file, 127, 6, 3104);
     			attr_dev(p, "id", "asterisk-info");
-    			attr_dev(p, "class", "svelte-1ih2o7a");
-    			add_location(p, file, 114, 2, 2633);
+    			attr_dev(p, "class", "svelte-s4v880");
+    			add_location(p, file, 126, 4, 3075);
     			attr_dev(div0, "id", "nav-bar");
-    			attr_dev(div0, "class", "svelte-1ih2o7a");
+    			attr_dev(div0, "class", "svelte-s4v880");
     			add_render_callback(() => /*div0_elementresize_handler*/ ctx[7].call(div0));
-    			add_location(div0, file, 106, 1, 2399);
+    			add_location(div0, file, 118, 2, 2817);
     			set_style(main, "padding-top", /*nav_bar_height*/ ctx[2] + "px");
-    			attr_dev(main, "class", "svelte-1ih2o7a");
-    			add_location(main, file, 118, 1, 2771);
+    			attr_dev(main, "class", "svelte-s4v880");
+    			add_location(main, file, 131, 2, 3226);
     			attr_dev(div1, "id", "top");
-    			attr_dev(div1, "class", "defaults theme-1 svelte-1ih2o7a");
-    			add_location(div1, file, 105, 0, 2358);
+    			attr_dev(div1, "class", "defaults theme-1 svelte-s4v880");
+    			add_location(div1, file, 117, 0, 2775);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1407,6 +1407,15 @@ var app = (function () {
     	}).join(" ");
     }
 
+    function triggerSecondLoad() {
+    	if (localStorage.getItem("loading") === "true") {
+    		localStorage.setItem("loading", false);
+    	} else {
+    		localStorage.setItem("loading", true);
+    		document.location.reload();
+    	}
+    }
+
     function gtag() {
     	dataLayer.push(arguments);
     }
@@ -1447,6 +1456,8 @@ var app = (function () {
     			top.classList.add("theme-" + theme);
     			top.classList.remove("theme-1");
     		}
+
+    		triggerSecondLoad();
     	});
 
     	window.dataLayer = window.dataLayer || [];
@@ -1481,6 +1492,7 @@ var app = (function () {
     		shown_category,
     		items,
     		categories,
+    		triggerSecondLoad,
     		gtag,
     		switch_category
     	});
