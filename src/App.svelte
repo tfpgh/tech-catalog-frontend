@@ -62,15 +62,6 @@
     categories = cleaned_categories;
   }
 
-  function triggerSecondLoad() {
-    if (localStorage.getItem("loading") === "true") {
-      localStorage.setItem("loading", false);
-    } else {
-      localStorage.setItem("loading", true);
-      document.location.reload();
-    }
-  }
-
   onMount(async () => {
     // Get items
     const res = await fetch(
@@ -85,8 +76,6 @@
       top.classList.add("theme-" + theme);
       top.classList.remove("theme-1");
     }
-
-    triggerSecondLoad();
   });
 
   window.dataLayer = window.dataLayer || [];
