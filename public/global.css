@@ -1,18 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
 @import url("https://use.typekit.net/fbp8sfd.css");
-
 
 .theme-1 {
   --corner-radius: 20px;
   --background-color: #111111;
   --secondary-background-color: #334756;
-  --border-color: #FFFFFF;
-  --main-text-color: #FFFFFF;
-  --secondary-text-color: #BCF8EC;
+  --border-color: #ffffff;
+  --main-text-color: #ffffff;
+  --secondary-text-color: #bcf8ec;
   --header-background-color: #334756;
   --main-font: "Work Sans", sans-serif;
   --secondary-font: "Space Mono", sans-serif;
@@ -24,7 +23,7 @@
   --secondary-background-color: #f1faee;
   --border-color: #457b9d;
   --main-text-color: #e63946;
-  --secondary-text-color: #457b9d;
+  --secondary-text-color: #325971;
   --header-background-color: #cccccc;
   --main-font: "prometo", sans-serif;
   --secondary-font: "Inter", sans-serif;

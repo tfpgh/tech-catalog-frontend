@@ -869,9 +869,9 @@ var app = (function () {
     			button = element("button");
     			t = text(/*name*/ ctx[0]);
     			attr_dev(button, "id", /*name*/ ctx[0]);
-    			attr_dev(button, "class", "svelte-hki8rl");
+    			attr_dev(button, "class", "svelte-qgn59j");
     			toggle_class(button, "active", /*active*/ ctx[1]);
-    			add_location(button, file$1, 5, 0, 77);
+    			add_location(button, file$1, 5, 0, 73);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
