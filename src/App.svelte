@@ -127,7 +127,7 @@
           quantity={item.quantity}
           checkoutable={item.checkoutable}
           rotation={item.rotation}
-          image_url={"https://tech-catalog-images.s3.us-west-1.amazonaws.com/" +
+          image_url={"https://d2ds8ypetc8do9.cloudfront.net/" +
             item.key +
             ".png"}
         />

@@ -1056,7 +1056,7 @@ var app = (function () {
     				quantity: /*item*/ ctx[8].quantity,
     				checkoutable: /*item*/ ctx[8].checkoutable,
     				rotation: /*item*/ ctx[8].rotation,
-    				image_url: "https://tech-catalog-images.s3.us-west-1.amazonaws.com/" + /*item*/ ctx[8].key + ".png"
+    				image_url: "https://d2ds8ypetc8do9.cloudfront.net/" + /*item*/ ctx[8].key + ".png"
     			},
     			$$inline: true
     		});
@@ -1076,7 +1076,7 @@ var app = (function () {
     			if (dirty & /*items*/ 1) item_changes.quantity = /*item*/ ctx[8].quantity;
     			if (dirty & /*items*/ 1) item_changes.checkoutable = /*item*/ ctx[8].checkoutable;
     			if (dirty & /*items*/ 1) item_changes.rotation = /*item*/ ctx[8].rotation;
-    			if (dirty & /*items*/ 1) item_changes.image_url = "https://tech-catalog-images.s3.us-west-1.amazonaws.com/" + /*item*/ ctx[8].key + ".png";
+    			if (dirty & /*items*/ 1) item_changes.image_url = "https://d2ds8ypetc8do9.cloudfront.net/" + /*item*/ ctx[8].key + ".png";
     			item.$set(item_changes);
     		},
     		i: function intro(local) {
