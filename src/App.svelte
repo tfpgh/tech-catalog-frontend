@@ -1,7 +1,7 @@
 <script>
-  import Item from "./Item.svelte";
-  import Category from "./Category.svelte";
   import { onMount } from "svelte";
+  import Category from "./Category.svelte";
+  import Item from "./Item.svelte";
 
   function toTitleCase(string) {
     return string
@@ -64,9 +64,7 @@
 
   onMount(async () => {
     // Get items
-    const res = await fetch(
-      "https://tech-catalog-backend.herokuapp.com/get_items"
-    );
+    const res = await fetch("https://tech-catalog-backend.fly.dev/get_items");
 
     items = await res.json();
 
@@ -101,7 +99,8 @@
   <title>Logan Tech Catalog Theme {theme}</title>
   <script
     async
-    src="https://www.googletagmanager.com/gtag/js?id={measurement_id}"></script>
+    src="https://www.googletagmanager.com/gtag/js?id={measurement_id}"
+  ></script>
 </svelte:head>
 
 <div id="top" class="defaults theme-1">
